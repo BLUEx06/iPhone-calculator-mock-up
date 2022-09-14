@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: white;
+  background-color: #333;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.calculator {
+  width: 330px;
+  height: 720px;
+  background-color: #111;
+  border: 8px solid #ccc;
+  border-radius: 30px;
+  padding: 2%;
+}
+.calculator .container {
+  height: 95%;
+  width: 270px;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#display {
+  height: 35%;
+  font-size: 3rem;
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.calculator .keypad {
+  width: 280px;
+  height: 350px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 10px;
+}
+.keypad button {
+  border: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  transition-duration: initial;
+}
+
+.bar {
+  width: 150px;
+  height: 5px;
+  border-radius: 2.5px;
+  background-color: #eee;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+}
+
+#zero {
+  grid-column: 1 / span 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 32.5px;
+}
+
+.lightgrey {
+  color: #111;
+  background-color: #aaa;
+}
+.darkgrey {
+  background-color: #333;
+  color: white;
+}
+.orange {
+  color: white;
+  background-color: orange;
+}
+
+.clicked {
+  /* orangeButtons */
+  color: orange;
+  background-color: #eee;
+}
+.onclick {
+  /* lightgreyButtons */
+  color: #333;
+  background-color: #eee;
+}
