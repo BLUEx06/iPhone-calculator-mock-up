@@ -201,7 +201,9 @@ lightgreyButtons.forEach((button) => {
         plusOrMinusFunction(document.getElementById("display").textContent);
         break;
       case document.getElementById("percentKey"):
-        percentageFunction(document.getElementById("display").textContent);
+        setTimeout(() => {
+          percentageFunction(document.getElementById("display").textContent);
+        }, 80);
         break;
     }
     // this.classList.remove("onclick");
