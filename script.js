@@ -206,6 +206,5 @@ lightgreyButtons.forEach((button) => {
         }, 80);
         break;
     }
-    // this.classList.remove("onclick");
   });
 });
