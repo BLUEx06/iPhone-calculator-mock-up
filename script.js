@@ -147,10 +147,11 @@ const equalBtn = document.getElementById("equal");
 
 orangeButtons.forEach((button) => {
   button.addEventListener("click", function () {
-    if (document.getElementById("display").textContent === "0") {
+    const numberDisplayed = document.getElementById("display").textContent;
+    if (numberDisplayed === "0") {
       return;
     }
-    value.temp = parseFloat(document.getElementById("display").textContent);
+    value.temp = parseFloat(numberDisplayed);
 
     if (value.secondary && value.prior) {
       value.second = value.temp;
@@ -164,7 +165,6 @@ orangeButtons.forEach((button) => {
       if (value.secondary && this.classList.contains("prior")) {
         value.prior = value.temp;
         operator.prior = this.id;
-
         nox();
         this.classList.add("clicked");
         return;
