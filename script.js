@@ -130,8 +130,6 @@ numbers.forEach((button) => {
       nox();
       operator.clicked = "";
     }
-    //
-    ///
     appendNumber(this.textContent);
     document.getElementById("plusOrMinus").classList.remove("onclick");
     document.getElementById("percentKey").classList.remove("onclick");
@@ -139,7 +137,6 @@ numbers.forEach((button) => {
 });
 
 // OPERATORS
-
 orangeButtons.forEach((button) => {
   button.addEventListener("click", function () {
     const numberDisplayed = document.getElementById("display").textContent;
@@ -156,7 +153,6 @@ orangeButtons.forEach((button) => {
     }
 
     if (operator.secondary || operator.prior) {
-      //condition II
       if (value.secondary && this.classList.contains("prior")) {
         value.prior = value.temp;
         operator.prior = this.id;
@@ -164,18 +160,15 @@ orangeButtons.forEach((button) => {
         this.classList.add("clicked");
         return;
       }
-      //condition.I
       value.second = value.temp;
       value.temp = getPriorResult() || getSecondaryResult();
       display(parseFloat(value.temp));
       operator.prior = operator.secondary = "";
     }
-
     //reset
     if (this === equalBtn) {
       value.secondary = value.prior = value.second = 0;
     }
-
     //choosing operator
     nox();
     this.classList.add("clicked");
