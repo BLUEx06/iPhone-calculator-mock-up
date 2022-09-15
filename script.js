@@ -81,11 +81,6 @@ function findClickedOrange() {
   });
 }
 
-function resetOperator() {
-  operator.secondary = "";
-  operator.prior = "";
-}
-
 //
 // calculate functions
 function getPriorResult() {
