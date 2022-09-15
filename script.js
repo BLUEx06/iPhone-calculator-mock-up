@@ -71,6 +71,20 @@ function percentageFunction(numberDisplayed) {
 }
 
 //
+// set state functions
+function nox() {
+  orangeButtons.forEach((button) => button.classList.remove("clicked"));
+}
+
+function findClickedOrange() {
+  orangeButtons.forEach((button) => {
+    if (button.classList.contains("clicked")) {
+      operator.clicked = button.id;
+    }
+  });
+}
+
+//
 // calculate functions
 function getPriorResult() {
   if (operator.prior === "multiply") {
@@ -90,80 +104,82 @@ function getSecondaryResult() {
   }
 }
 
-// number clicked or key down
-function numberClickedOrKeydown() {
-  //has clicked operator?
-  orangeButtons.forEach((button) => {
-    if (button.classList.contains("clicked")) {
-      operator.clicked = button.id;
-    }
-  });
-  //set operator
-  if (operator.clicked) {
-    switch (operator.clicked) {
-      case "plus":
-      case "minus":
-        operator.secondary = operator.clicked;
-        value.secondary = value.temp;
-        break;
-      case "multiply":
-      case "devide":
-        operator.prior = operator.clicked;
-        value.prior = value.temp;
-        break;
-    }
-    display("");
-    orangeButtons.forEach((button) => button.classList.remove("clicked"));
-    operator.clicked = "";
-  }
-  appendNumber(this.textContent);
-  document.getElementById("plusOrMinus").classList.remove("onclick");
-  document.getElementById("percentKey").classList.remove("onclick");
-}
+//
+// events
 
-// operator clicked or key down
-function operatorClickedOrKeydown() {
-  const numberDisplayed = document.getElementById("display").textContent;
-  if (numberDisplayed === "0") {
-    return;
-  }
-  value.temp = parseFloat(numberDisplayed);
-
-  if (value.secondary && value.prior) {
-    value.second = value.temp;
-    value.temp = getPriorResult();
-    display(parseFloat(value.temp));
-    operator.prior = "";
-  }
-
-  if (operator.secondary || operator.prior) {
-    if (value.secondary && this.classList.contains("prior")) {
-      value.prior = value.temp;
-      operator.prior = this.id;
-      nox();
-      this.classList.add("clicked");
-      return;
-    }
-    value.second = value.temp;
-    value.temp = getPriorResult() || getSecondaryResult();
-    display(parseFloat(value.temp));
-    operator.prior = operator.secondary = "";
-  }
-  if (this === equalBtn) {
-    value.secondary = value.prior = value.second = 0;
-  }
-  nox();
-  this.classList.add("clicked");
-}
-
-// number CLICK event
+// NUMBERS pads
 numbers.forEach((button) => {
-  button.addEventListener("click", numberClickedOrKeydown());
+  button.addEventListener("click", function (e) {
+    //has clicked operator?
+    findClickedOrange();
+    //set operator
+    if (operator.clicked) {
+      switch (operator.clicked) {
+        case "plus":
+        case "minus":
+          operator.secondary = operator.clicked;
+          value.secondary = value.temp;
+          break;
+        case "multiply":
+        case "devide":
+          operator.prior = operator.clicked;
+          value.prior = value.temp;
+          break;
+      }
+      display("");
+      nox();
+      operator.clicked = "";
+    }
+    //
+    ///
+    appendNumber(this.textContent);
+    document.getElementById("plusOrMinus").classList.remove("onclick");
+    document.getElementById("percentKey").classList.remove("onclick");
+  });
 });
 
-// operator CLICK event
+// OPERATORS
+
 orangeButtons.forEach((button) => {
-  button.addEventListener("click", operatorClickedOrKeydown());
+  button.addEventListener("click", function () {
+    const numberDisplayed = document.getElementById("display").textContent;
+    if (numberDisplayed === "0") {
+      return;
+    }
+    value.temp = parseFloat(numberDisplayed);
+
+    if (value.secondary && value.prior) {
+      value.second = value.temp;
+      value.temp = getPriorResult();
+      display(parseFloat(value.temp));
+      operator.prior = "";
+    }
+
+    if (operator.secondary || operator.prior) {
+      //condition II
+      if (value.secondary && this.classList.contains("prior")) {
+        value.prior = value.temp;
+        operator.prior = this.id;
+        nox();
+        this.classList.add("clicked");
+        return;
+      }
+      //condition.I
+      value.second = value.temp;
+      value.temp = getPriorResult() || getSecondaryResult();
+      display(parseFloat(value.temp));
+      operator.prior = operator.secondary = "";
+    }
+
+    //reset
+    if (this === equalBtn) {
+      value.secondary = value.prior = value.second = 0;
+    }
+
+    //choosing operator
+    nox();
+    this.classList.add("clicked");
+  });
 });
 
 //
