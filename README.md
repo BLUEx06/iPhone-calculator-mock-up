@@ -37,9 +37,11 @@ This is where you store the operator and value before you calculate them
 
 ## What it looks like
 
-<img src="./assets/screenshot_01.png" width="200px" style="display: inline">
-<img src="./assets/screenshot_02.png" width="200px" style="display: inline">
-<img src="./assets/screenshot_03.png" width="200px" style="display: inline">
+<div style="display:flex">
+<img src="./assets/screenshot_01.png" width="200px" style="display: inline-block">
+<img src="./assets/screenshot_02.png" width="200px" style="display: inline-block">
+<img src="./assets/screenshot_03.png" width="200px" style="display: inline-block">
+</div>
 
 <br>
 
