@@ -17,6 +17,9 @@ const value = {
 
 const plusOrMinusBtn = document.getElementById("plusOrMinus");
 const percentKeyBtn = document.getElementById("percentKey");
+const orangeButtons = document.querySelectorAll("button.orange");
+const equalBtn = document.getElementById("equal");
+const numbers = document.querySelectorAll("button.number");
 
 //
 // functions that change displayed content
@@ -105,7 +108,6 @@ function getSecondaryResult() {
 // events
 
 // NUMBERS pads
-const numbers = document.querySelectorAll("button.number");
 numbers.forEach((button) => {
   button.addEventListener("click", function (e) {
     //has clicked operator?
@@ -137,8 +139,6 @@ numbers.forEach((button) => {
 });
 
 // OPERATORS
-const orangeButtons = document.querySelectorAll("button.orange");
-const equalBtn = document.getElementById("equal");
 
 orangeButtons.forEach((button) => {
   button.addEventListener("click", function () {
