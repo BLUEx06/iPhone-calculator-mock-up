@@ -156,7 +156,7 @@ orangeButtons.forEach((button) => {
     if (value.secondary && value.prior) {
       value.second = value.temp;
       value.temp = getPriorResult();
-      display(value.temp);
+      display(parseFloat(value.temp));
       operator.prior = "";
     }
 
@@ -172,7 +172,7 @@ orangeButtons.forEach((button) => {
       //condition.I
       value.second = value.temp;
       value.temp = getPriorResult() || getSecondaryResult();
-      display(value.temp);
+      display(parseFloat(value.temp));
       operator.prior = operator.secondary = "";
     }
 
