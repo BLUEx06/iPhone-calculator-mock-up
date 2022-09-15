@@ -37,7 +37,9 @@ This is where you store the operator and value before you calculate them
 
 ## What it looks like
 
-![](/assets/screenshot_01.png)
+<img src="./assets/screenshot_01.png" width="200px">
+<img src="./assets/screenshot_02.png" width="200px">
+<img src="./assets/screenshot_03.png" width="200px">
 
 <br>
 
