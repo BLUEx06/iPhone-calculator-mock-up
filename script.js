@@ -98,7 +98,7 @@ function getPriorResult() {
 }
 
 function getSecondaryResult() {
-  if (operator.secondary === "addition") {
+  if (operator.secondary === "plus") {
     return value.secondary + value.second;
   }
   if (operator.secondary === "minus") {
